@@ -5,6 +5,7 @@ namespace Infinety\MenuBuilder\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Infinety\MenuBuilder\Http\Models\MenuItems;
+use Illuminate\Support\Str;
 
 class Menu extends Model
 {
@@ -26,7 +27,7 @@ class Menu extends Model
         parent::boot();
 
         static::saving(function ($model) {
-            $model->slug = str_slug($model->name);
+            $model->slug = Str::slug($model->name);
         });
     }
 
